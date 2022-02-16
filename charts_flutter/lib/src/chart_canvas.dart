@@ -76,7 +76,7 @@ class ChartCanvas implements common.ChartCanvas {
       Rectangle<num>? clipBounds,
       common.Color? fill,
       common.Color? stroke,
-      bool smoothLine,
+      bool? smoothLine,
       bool? roundEndCaps,
       double? strokeWidthPx,
       List<int>? dashPattern}) {
