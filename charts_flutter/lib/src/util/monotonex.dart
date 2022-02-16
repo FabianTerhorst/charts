@@ -37,19 +37,19 @@ class MonotoneX {
   }
 
   static Path addCurve(Path path, List<Point> points, [bool reversed = false]) {
-    var targetPoints = List<Point>();
+    var targetPoints = <Point>[];
     targetPoints.addAll(points);
     targetPoints.add(Point(
         points[points.length - 1].x * 2, points[points.length - 1].y * 2));
-    double x0, y0, x1, y1, t0;
+    double? x0, y0, x1, y1, t0;
     if (path == null) {
       path = Path();
     }
     List<List<double>> arr = [];
     for (int i = 0; i < targetPoints.length; i++) {
-      double t1;
-      double x = targetPoints[i].x;
-      double y = targetPoints[i].y;
+      double? t1;
+      double x = targetPoints[i].x.toDouble();
+      double y = targetPoints[i].y.toDouble();
       if (x == x1 && y == y1) continue;
       switch (i) {
         case 0:
@@ -57,12 +57,12 @@ class MonotoneX {
         case 1:
           break;
         case 2:
-          t1 = _slope3(x0, y0, x1, y1, x, y);
+          t1 = _slope3(x0!, y0!, x1!, y1!, x, y);
           arr.add([x0, y0, x1, y1, _slope2(x0, y0, x1, y1, t1), t1]);
           break;
         default:
-          t1 = _slope3(x0, y0, x1, y1, x, y);
-          arr.add([x0, y0, x1, y1, t0, t1]);
+          t1 = _slope3(x0!, y0!, x1!, y1!, x, y);
+          arr.add([x0, y0, x1, y1, t0!, t1]);
       }
       x0 = x1;
       y0 = y1;
