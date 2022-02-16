@@ -39,7 +39,7 @@ class PolygonPainter {
       common.Color? fill,
       common.Color? stroke,
       double? strokeWidthPx,
-      bool smoothLine}) {
+      bool? smoothLine}) {
     if (points.isEmpty) {
       return;
     }
@@ -85,7 +85,7 @@ class PolygonPainter {
       }
 
       final path = new Path();
-      if (smoothLine) {
+      if (smoothLine ?? false) {
         if (points[0].y == points[1].y && points[1].x == points[2].x) {
           path.moveTo(points.last.x.toDouble(), points.last.y.toDouble());
           path.lineTo(points[0].x.toDouble(), points[0].y.toDouble());
