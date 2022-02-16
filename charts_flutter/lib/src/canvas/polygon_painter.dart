@@ -98,7 +98,7 @@ class PolygonPainter {
 
           MonotoneX.addCurve(path,
               points.sublist(0, points.length ~/ 2).reversed.toList(), true);
-          path.lineTo(points[points.length ~/ 2].x,
+          path.lineTo(points[points.length ~/ 2].x.toDouble(),
               points[points.length ~/ 2].y.toDouble());
 
           MonotoneX.addCurve(path, points.sublist(points.length ~/ 2));
